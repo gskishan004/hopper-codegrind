@@ -50,28 +50,28 @@ def index():
 # 	result=usersCollection.insert_one(user)
 # 	return 'true'
 
-# #LOGIN ENDPOINT
-# @app.route('/login', methods=['POST'])
-# def loginpage():
-# 	psid = request.form['psid']
-# 	pwd = request.form['password']
-# 	m = hashlib.md5()
-# 	m.update(pwd.encode('utf-8'))
-# 	pwd = m.hexdigest()
-# 	data= usersCollection.find_one({'psid': psid})
-# 	try:
-# 		if (data['pwd'][0] == pwd):
-# 			data = str(data)
-# 			data = data.replace('[','')
-# 			data = data.replace(']','')
-# 			data = data.replace("'",'"')
-# 			data = data.replace(')','')
-# 			data = data.replace('ObjectId(','')
-# 			return str(data)
-# 		else:
-# 			return "false"
-# 	except:
-# 		return "false"
+#LOGIN ENDPOINT
+@app.route('/login', methods=['POST'])
+def loginpage():
+	psid = request.form['psid']
+	pwd = request.form['password']
+	m = hashlib.md5()
+	m.update(pwd.encode('utf-8'))
+	pwd = m.hexdigest()
+	data= usersCollection.find_one({'psid': psid})
+	try:
+		if (data['pwd'][0] == pwd):
+			data = str(data)
+			data = data.replace('[','')
+			data = data.replace(']','')
+			data = data.replace("'",'"')
+			data = data.replace(')','')
+			data = data.replace('ObjectId(','')
+			return str(data)
+		else:
+			return "false"
+	except:
+		return "false"
 
 # #LOGS FOR LATE STAY 
 # @app.route('/latestay', methods=['POST'])
