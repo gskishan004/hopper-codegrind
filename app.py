@@ -26,70 +26,70 @@ ridesCollection = db.rides
 def index():
 	return "Hopper! \n get hopping..."
 
-#REGISTER ENDPOINT
-@app.route('/register', methods=['POST'])
-def register():
-	psid = request.form['psid']
-	pwd = request.form['password']
-	# hashing the password
-	m = hashlib.md5()
-	m.update(pwd.encode('utf-8'))
-	pwd = m.hexdigest()
-	#name = request.form['name']
-	#building = request.form['building']
-	managerName = request.form['managerName']
-	managerContact = request.form['managerContact']
-	user = {
-		'psid' : [psid],
-		'pwd' : [pwd],
-		 #'name' : [name],
-		 #'building' : [building],
-		'managerName' : [managerName],
-		'managerContact' : [managerContact]
-	}
-	result=usersCollection.insert_one(user)
-	return 'true'
+# #REGISTER ENDPOINT
+# @app.route('/register', methods=['POST'])
+# def register():
+# 	psid = request.form['psid']
+# 	pwd = request.form['password']
+# 	# hashing the password
+# 	m = hashlib.md5()
+# 	m.update(pwd.encode('utf-8'))
+# 	pwd = m.hexdigest()
+# 	#name = request.form['name']
+# 	#building = request.form['building']
+# 	managerName = request.form['managerName']
+# 	managerContact = request.form['managerContact']
+# 	user = {
+# 		'psid' : [psid],
+# 		'pwd' : [pwd],
+# 		 #'name' : [name],
+# 		 #'building' : [building],
+# 		'managerName' : [managerName],
+# 		'managerContact' : [managerContact]
+# 	}
+# 	result=usersCollection.insert_one(user)
+# 	return 'true'
 
-#LOGIN ENDPOINT
-@app.route('/login', methods=['POST'])
-def loginpage():
-	psid = request.form['psid']
-	pwd = request.form['password']
-	m = hashlib.md5()
-	m.update(pwd.encode('utf-8'))
-	pwd = m.hexdigest()
-	data= usersCollection.find_one({'psid': psid})
-	try:
-		if (data['pwd'][0] == pwd):
-			data = str(data)
-			data = data.replace('[','')
-			data = data.replace(']','')
-			data = data.replace("'",'"')
-			data = data.replace(')','')
-			data = data.replace('ObjectId(','')
-			return str(data)
-		else:
-			return "false"
-	except:
-		return "false"
+# #LOGIN ENDPOINT
+# @app.route('/login', methods=['POST'])
+# def loginpage():
+# 	psid = request.form['psid']
+# 	pwd = request.form['password']
+# 	m = hashlib.md5()
+# 	m.update(pwd.encode('utf-8'))
+# 	pwd = m.hexdigest()
+# 	data= usersCollection.find_one({'psid': psid})
+# 	try:
+# 		if (data['pwd'][0] == pwd):
+# 			data = str(data)
+# 			data = data.replace('[','')
+# 			data = data.replace(']','')
+# 			data = data.replace("'",'"')
+# 			data = data.replace(')','')
+# 			data = data.replace('ObjectId(','')
+# 			return str(data)
+# 		else:
+# 			return "false"
+# 	except:
+# 		return "false"
 
-#LOGS FOR LATE STAY 
-@app.route('/latestay', methods=['POST'])
-def lateStay():
-	psid = request.form['psid']
-	reason = request.form['reason']
-	date = request.form['date']
-	travellingTo = request.form['travellingTo']
-	travellingBy = request.form['travellingBy']
-	latestay = {
-		'psid' : [psid],
-		'reason' : [reason],
-		'date' : [date],
-		'travellingTo' : [travellingTo],
-		'travellingBy' : [travellingBy]
-	}
-	result=lateStayCollection.insert_one(latestay)
-	return 'true'
+# #LOGS FOR LATE STAY 
+# @app.route('/latestay', methods=['POST'])
+# def lateStay():
+# 	psid = request.form['psid']
+# 	reason = request.form['reason']
+# 	date = request.form['date']
+# 	travellingTo = request.form['travellingTo']
+# 	travellingBy = request.form['travellingBy']
+# 	latestay = {
+# 		'psid' : [psid],
+# 		'reason' : [reason],
+# 		'date' : [date],
+# 		'travellingTo' : [travellingTo],
+# 		'travellingBy' : [travellingBy]
+# 	}
+# 	result=lateStayCollection.insert_one(latestay)
+# 	return 'true'
 
 #MAIN
 if __name__ == '__main__':
