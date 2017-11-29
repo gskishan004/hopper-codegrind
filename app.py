@@ -26,29 +26,6 @@ ridesCollection = db.rides
 def index():
 	return "Hopper! \n get hopping..."
 
-# #REGISTER ENDPOINT
-# @app.route('/register', methods=['POST'])
-# def register():
-# 	psid = request.form['psid']
-# 	pwd = request.form['password']
-# 	# hashing the password
-# 	m = hashlib.md5()
-# 	m.update(pwd.encode('utf-8'))
-# 	pwd = m.hexdigest()
-# 	#name = request.form['name']
-# 	#building = request.form['building']
-# 	managerName = request.form['managerName']
-# 	managerContact = request.form['managerContact']
-# 	user = {
-# 		'psid' : [psid],
-# 		'pwd' : [pwd],
-# 		 #'name' : [name],
-# 		 #'building' : [building],
-# 		'managerName' : [managerName],
-# 		'managerContact' : [managerContact]
-# 	}
-# 	result=usersCollection.insert_one(user)
-# 	return 'true'
 
 #LOGIN ENDPOINT
 @app.route('/login', methods=['POST'])
@@ -72,6 +49,25 @@ def login():
 			return "false"
 	except:
 		return "false"
+
+#REGISTER ENDPOINT
+@app.route('/register', methods=['POST'])
+def register():
+	psid = request.form['psid']
+	pwd = request.form['password']
+	# hashing the password
+	m = hashlib.md5()
+	m.update(pwd.encode('utf-8'))
+	pwd = m.hexdigest()
+	#name = request.form['name']
+	#building = request.form['building']
+	user = {
+		'psid' : [psid],
+		'pwd' : [pwd]
+	}
+	result=usersCollection.insert_one(user)
+	return 'true'
+
 
 # #LOGS FOR LATE STAY 
 # @app.route('/latestay', methods=['POST'])
