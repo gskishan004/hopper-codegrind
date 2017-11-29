@@ -1,6 +1,4 @@
 #MONGOLAB SERVER DETAILS 
-mongodb://<dbuser>:<dbpassword>@ds123896.mlab.com:23896/hopperdb
-
 server = 'ds123896.mlab.com:23896/hopperdb'
 port = 23896
 db_name = 'hopperdb'
