@@ -1,9 +1,11 @@
 #MONGOLAB SERVER DETAILS 
+mongodb://<dbuser>:<dbpassword>@ds123896.mlab.com:23896/hopperdb
+
 server = 'ds123896.mlab.com:23896/hopperdb'
 port = 23896
 db_name = 'hopperdb'
-username = 'gskishan004'
-password = 'mlab4321'
+username = 'ishan'
+password = 'ishan'
 
 from flask import Flask, session, redirect, url_for, escape, request
 from datetime import datetime
