@@ -38,13 +38,7 @@ def login():
 	data= usersCollection.find_one({'psid': psid})
 	try:
 		if (data['pwd'][0] == pwd):
-			data = str(data)
-			data = data.replace('[','')
-			data = data.replace(']','')
-			data = data.replace("'",'"')
-			data = data.replace(')','')
-			data = data.replace('ObjectId(','')
-			return str(data)
+			return "true"
 		else:
 			return "false"
 	except:
