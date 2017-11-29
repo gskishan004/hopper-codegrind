@@ -1,3 +1,4 @@
+#api = AIzaSyDAJsyj0iDN48t3gM-zwHNcxd70FBE-KP4
 #MONGOLAB SERVER DETAILS 
 server = 'ds123896.mlab.com:23896/hopperdb'
 port = 23896
@@ -19,8 +20,7 @@ client = MongoClient(uri)
 #GET DATABASE AND TABLE NAME
 db=client.hopperdb
 usersCollection = db.users
-hopstarsCollection = db.hopstars
-ridesCollection = db.riders
+ridesCollection = db.rides
 
 #INDEX PAGE
 @app.route('/')
@@ -63,44 +63,24 @@ def register():
 	result=usersCollection.insert_one(user)
 	return 'true'
 
-@app.route('/registerHopstar', methods=['POST'])
-def register():
-	psid = request.form['psid']
-	name = request.form['name']
-	home = request.form['home']
-	office = request.form['office']
-	time = request.form['time']
 
-
-	hopstar = {
-		'psid' : [psid],
-		'name' : [name],
-		'home' : [home],
-		'office' : [office],
-		'time' : [time]
-	}
-	result=hopstarsCollection.insert_one(hopstar)
-	return 'true'
-
-@app.route('/registerRiders', methods=['POST'])
-def register():
-	psid = request.form['hopstar']
-	name = request.form['hopper']
-	home = request.form['destiantion']
-	office = request.form['time']
-
-
-	rider = {
-		'psid' : [psid],
-		'name' : [name],
-		'home' : [home],
-		'office' : [office],
-		'time' : [time]
-	}
-	result=ridersCollection.insert_one(rider)
-	return 'true'
-
-
+# #LOGS FOR LATE STAY 
+# @app.route('/latestay', methods=['POST'])
+# def lateStay():
+# 	psid = request.form['psid']
+# 	reason = request.form['reason']
+# 	date = request.form['date']
+# 	travellingTo = request.form['travellingTo']
+# 	travellingBy = request.form['travellingBy']
+# 	latestay = {
+# 		'psid' : [psid],
+# 		'reason' : [reason],
+# 		'date' : [date],
+# 		'travellingTo' : [travellingTo],
+# 		'travellingBy' : [travellingBy]
+# 	}
+# 	result=lateStayCollection.insert_one(latestay)
+# 	return 'true'
 
 #MAIN
 if __name__ == '__main__':
