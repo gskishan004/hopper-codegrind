@@ -17,7 +17,7 @@ uri = "mongodb://"+username+":"+password+"@"+server
 client = MongoClient(uri)
 
 #GET DATABASE AND TABLE NAME
-db=client.cmbwsapi
+db=client.hopperdb
 usersCollection = db.users
 ridesCollection = db.rides
 
