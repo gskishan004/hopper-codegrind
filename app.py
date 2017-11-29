@@ -50,6 +50,7 @@ def login():
 @app.route('/register', methods=['POST'])
 def register():
 	psid = request.form['psid']
+	name = request.form['name']
 	pwd = request.form['password']
 	# hashing the password
 	m = hashlib.md5()
@@ -59,6 +60,7 @@ def register():
 	#building = request.form['building']
 	user = {
 		'psid' : [psid],
+		'name' : [name]
 		'pwd' : [pwd]
 	}
 	result=usersCollection.insert_one(user)
