@@ -3,7 +3,7 @@ server = 'ds123896.mlab.com:23896/hopperdb'
 port = 23896
 db_name = 'hopperdb'
 username = 'gskishan004'
-password = 'malb4321'
+password = 'mlab4321'
 
 from flask import Flask, session, redirect, url_for, escape, request
 from datetime import datetime
