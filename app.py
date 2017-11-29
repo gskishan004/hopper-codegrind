@@ -64,7 +64,7 @@ def register():
 	return 'true'
 
 @app.route('/registerHopstar', methods=['POST'])
-def register():
+def registerHopstar():
 	psid = request.form['psid']
 	name = request.form['name']
 	home = request.form['home']
@@ -83,7 +83,7 @@ def register():
 	return 'true'
 
 @app.route('/registerRiders', methods=['POST'])
-def register():
+def registerRider():
 	psid = request.form['hopstar']
 	name = request.form['hopper']
 	home = request.form['destiantion']
