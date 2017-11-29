@@ -52,7 +52,7 @@ def index():
 
 #LOGIN ENDPOINT
 @app.route('/login', methods=['POST'])
-def loginpage():
+def login():
 	psid = request.form['psid']
 	pwd = request.form['password']
 	m = hashlib.md5()
